@@ -1,0 +1,9 @@
+.headerRow {
+    height: 15vh;
+}
+
+.headerText {
+    font-family: 'Faster One', cursive;
+    color: whitesmoke;
+    font-size: 40px;
+}

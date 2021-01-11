@@ -1,0 +1,11 @@
+.startModalRow {
+    z-index: 1;
+}
+
+.startModalCard {
+    width: 75%;
+}
+
+.startModalBtn {
+    width: 100px !important;
+}
