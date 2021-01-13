@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Timer.css';
 
 const Timer = (props) => {
@@ -6,6 +6,8 @@ const Timer = (props) => {
     const [secs, setSecs] = useState("00");
     const [mins, setMins] = useState("00");
     const [startTime, setStartTime] = useState();
+
+    const lastInterval = useRef();
 
     const startClock = () => {
         setInterval(trackTime, 1000);
@@ -41,16 +43,24 @@ const Timer = (props) => {
         }
     }, [props.gameStart]);
 
+    // useEffect(() => {
+    //     if (lastInterval.current) clearInterval(lastInterval.current);
+
+    //     if (props.gameStart === 'start') {
+    //         lastInterval.current = setInterval(trackTime, 1000);
+    //     } 
+    // }, [props.gameStart]);
+
     useEffect(() => {
-        let tickity;
-        if(startTime) {
-            tickity = setInterval(trackTime, 1000);
+        if(startTime && props.gameStart === 'start') {
+            lastInterval.current = setInterval(trackTime, 1000);
+            console.log(lastInterval.current)
         } else if (props.gameStart === 'endRound') {
+            console.log('else ifff')
             let finalS = secs;
             let finalM = mins;
             props.setFinishTime(`${finalM}:${finalS}`);
-            clearInterval(tickity);
-            console.log(tickity);
+            clearInterval(lastInterval.current);
         }
     }, [startTime, props.gameStart]);
 
