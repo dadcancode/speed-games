@@ -5,3 +5,13 @@
 .cardValue {
     font-size: 50vw;
 }
+
+.cardTitle {
+    font-family: 'Faster One', cursive;
+    font-size: 30pt;
+}
+
+.reportCardTimeText {
+    font-family: 'Russo One', sans-serif;
+    font-size: 60pt;
+}
